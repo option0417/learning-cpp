@@ -4,6 +4,7 @@
  *  Created on: 2011/11/6
  *      Author: option0417
  */
+#include "RandomVector.h"
 #include "DataStructure/Stack/IntStack.h"
 #include "Algorithms/InsertionSort/InsertSort.h"
 #include "Algorithms/SelectionSort/SelectionSort.h"
@@ -16,36 +17,34 @@ void single99();
 void double99();
 
 int main(void) {
-	srand(time(NULL));
 	int size = 0;
+	std::cout<<"Size of Vector : ";
 	std::cin>>size;
 
-	int vals[size];
+	RandomVector randomVector(size);
+	randomVector.show();
 
-	for (int i = 0; i < size; i++) {
-		vals[i] = (int)rand() % 100 + 1;
-	}
-
-	for (int i = 0; i < size; i++) {
-		std::cout<<vals[i]<<" ";
-	}
+	//int* vals = &(*randomVector.getVector())[0];
+	int* vals = &randomVector.getVector().at(0);
+	std::cout<<vals<<" ";
+	std::cout<<&randomVector.getVector().at(0)<<" ";
 	std::cout<<std::endl;
+	std::cout<<*vals<<" ";
+	std::cout<<randomVector.getVector().at(0)<<" ";
+	//InsertSort* sort1 = new InsertSort(randomVector.getVector().data(), size);
+	//IAlgorithm* sort2 = new SelectionSort(vals, size);
+	//IAlgorithm* sort3 = new BubbleSort(randomVector.getVector().data(), size));
 
-	//InsertSort* sort = new InsertSort(vals, 6);
-	//IAlgorithm* sort = new SelectionSort(vals, 7);
-	IAlgorithm* sort = new BubbleSort(vals, size);
+	//sort1->sort();
+	//sort2->sort();
+	//sort3->sort();
 
-	sort->sort();
-
-	for (int i = 0; i < size; i++) {
-		std::cout<<vals[i]<<" ";
-	}
-	std::cout<<std::endl;
-
+	//for (int i = 0; i < size; i++) {
+	//	std::cout<<vals[i]<<" ";
+	//	//vals++;
+	//}std::cout<<std::endl;
+	//randomVector.show();
 	//sort->show();
-
-	//single99();
-	//double99();
 
 	return 0;
 }
