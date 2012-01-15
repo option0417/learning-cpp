@@ -19,10 +19,10 @@ public:
 	RandomVector(int);
 	virtual ~RandomVector();
 
-	std::vector<int> getVector();
+	std::vector<int>* getVector();
 	void show();
 private:
-	std::vector<int> intVector;
+	std::vector<int> *intVector;
 	int size;
 
 	void init();

@@ -5,6 +5,7 @@
  *      Author: option0417
  */
 #include "RandomVector.h"
+#include "MongoSample.h"
 #include "DataStructure/Stack/IntStack.h"
 #include "Algorithms/InsertionSort/InsertSort.h"
 #include "Algorithms/SelectionSort/SelectionSort.h"
@@ -17,20 +18,19 @@ void single99();
 void double99();
 
 int main(void) {
-	int size = 0;
-	std::cout<<"Size of Vector : ";
-	std::cin>>size;
-
-	RandomVector randomVector(size);
-	randomVector.show();
-
-	//int* vals = &(*randomVector.getVector())[0];
-	int* vals = &randomVector.getVector().at(0);
-	std::cout<<vals<<" ";
-	std::cout<<&randomVector.getVector().at(0)<<" ";
-	std::cout<<std::endl;
-	std::cout<<*vals<<" ";
-	std::cout<<randomVector.getVector().at(0)<<" ";
+//	int size = 0;
+//	std::cout<<"Size of Vector : ";
+//	std::cin>>size;
+//
+//	RandomVector randomVector(size);
+//	randomVector.show();
+//
+//	int* vals = &(*randomVector.getVector())[0];
+//	std::cout<<vals<<" ";
+//	std::cout<<&randomVector.getVector()->at(0)<<" ";
+//	std::cout<<std::endl;
+//	std::cout<<*vals<<" ";
+//	std::cout<<randomVector.getVector()->at(0)<<" ";
 	//InsertSort* sort1 = new InsertSort(randomVector.getVector().data(), size);
 	//IAlgorithm* sort2 = new SelectionSort(vals, size);
 	//IAlgorithm* sort3 = new BubbleSort(randomVector.getVector().data(), size));
@@ -45,6 +45,9 @@ int main(void) {
 	//}std::cout<<std::endl;
 	//randomVector.show();
 	//sort->show();
+
+	MongoSample mongo;
+	mongo.run();
 
 	return 0;
 }

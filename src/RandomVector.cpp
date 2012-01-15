@@ -16,28 +16,28 @@ RandomVector::RandomVector(int size) :size(size) {
 }
 
 RandomVector::~RandomVector() {
-	intVector.clear();
-	//intVector.~vector();
+	intVector->clear();
+	delete intVector;
 	size = 0;
 }
 
-std::vector<int> RandomVector::getVector() {
+std::vector<int>* RandomVector::getVector() {
 	return intVector;
 }
 
 void RandomVector::show() {
 	for (int i = 0; i < size; i++) {
-		std::cout<<intVector.at(i)<<" ";
+		std::cout<<intVector->at(i)<<" ";
 	}
 	std::cout<<std::endl;
 }
 
 void RandomVector::init() {
 	srand(time(NULL));
-	//intVector = new std::vector<int>();
-	//intVector.reserve(size);
+	intVector = new std::vector<int>();
+	intVector->reserve(size);
 
 	for (int i = 0; i < size; i++) {
-		intVector.push_back((int)rand() % 100 + 1);
+		intVector->push_back((int)rand() % 100 + 1);
 	}
 }
