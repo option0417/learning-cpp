@@ -18,36 +18,26 @@ void single99();
 void double99();
 
 int main(void) {
-//	int size = 0;
-//	std::cout<<"Size of Vector : ";
-//	std::cin>>size;
-//
-//	RandomVector randomVector(size);
-//	randomVector.show();
-//
-//	int* vals = &(*randomVector.getVector())[0];
-//	std::cout<<vals<<" ";
-//	std::cout<<&randomVector.getVector()->at(0)<<" ";
-//	std::cout<<std::endl;
-//	std::cout<<*vals<<" ";
-//	std::cout<<randomVector.getVector()->at(0)<<" ";
+	int size = 0;
+	std::cout<<"Size of Vector : ";
+	std::cin>>size;
+
+	RandomVector randomVector(size);
+	randomVector.show();
+
+	int* vals = &(*randomVector.getVector())[0];
+
 	//InsertSort* sort1 = new InsertSort(randomVector.getVector().data(), size);
-	//IAlgorithm* sort2 = new SelectionSort(vals, size);
+	IAlgorithm* sort2 = new SelectionSort(vals, size);
 	//IAlgorithm* sort3 = new BubbleSort(randomVector.getVector().data(), size));
 
 	//sort1->sort();
-	//sort2->sort();
+	sort2->sort();
 	//sort3->sort();
 
-	//for (int i = 0; i < size; i++) {
-	//	std::cout<<vals[i]<<" ";
-	//	//vals++;
-	//}std::cout<<std::endl;
-	//randomVector.show();
-	//sort->show();
-
-	MongoSample mongo;
-	mongo.run();
+	for (int i = 0; i < size; i++) {
+		std::cout<<vals[i]<<" ";
+	}std::cout<<std::endl;
 
 	return 0;
 }
