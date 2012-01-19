@@ -7,6 +7,7 @@
 //#include "Others/RandomVector.h"
 //#include "Others/MongoSample.h"
 //#include "DataStructure/Stack/IntStack.h"
+#include "DataStructure/Stack/OPStack.h"
 #include "DataStructure/LinkedList/ILinkedList.h"
 //#include "Algorithms/InsertionSort/InsertSort.h"
 //#include "Algorithms/SelectionSort/SelectionSort.h"
@@ -43,16 +44,29 @@ int main(void) {
 
 
 
-	ILinkedList<int> *iLinkedList = new ILinkedList<int>();
-	iLinkedList->add(5);
-	iLinkedList->add(2);
-	iLinkedList->add(1);
-	std::cout<<"Size : "<<iLinkedList->size()<<std::endl;
-	std::cout<<"Val : "<<iLinkedList->get(0)<<std::endl;
-	std::cout<<"Val : "<<iLinkedList->get(1)<<std::endl;
-	std::cout<<"Val : "<<iLinkedList->get(2)<<std::endl;
-	std::cout<<"Val : "<<iLinkedList->get(0)<<std::endl;
-	std::cout<<"Val : "<<iLinkedList->get(2)<<std::endl;
+//	ILinkedList<int> *iLinkedList = new ILinkedList<int>();
+//	iLinkedList->add(5);
+//	iLinkedList->add(2);
+//	iLinkedList->add(1);
+//	std::cout<<"Size : "<<iLinkedList->size()<<std::endl;
+//	std::cout<<"Val : "<<iLinkedList->get(0)<<std::endl;
+//	std::cout<<"Val : "<<iLinkedList->get(1)<<std::endl;
+//	std::cout<<"Val : "<<iLinkedList->get(2)<<std::endl;
+//	std::cout<<"Val : "<<iLinkedList->get(0)<<std::endl;
+//	std::cout<<"Val : "<<iLinkedList->get(2)<<std::endl;
+
+	op::OPStack<int> intStack(5);
+	std::cout<<"Size : "<<intStack.size()<<std::endl;
+	intStack.push(1);
+	intStack.push(2);
+	intStack.push(4);
+	intStack.push(5);
+	intStack.push(3);
+	std::cout<<"POP1 : "<<intStack.pop()<<std::endl;
+	std::cout<<"POP2 : "<<intStack.pop()<<std::endl;
+	std::cout<<"POP3 : "<<intStack.pop()<<std::endl;
+	std::cout<<"POP4 : "<<intStack.pop()<<std::endl;
+	std::cout<<"POP5 : "<<intStack.pop()<<std::endl;
 
 	return 0;
 }
