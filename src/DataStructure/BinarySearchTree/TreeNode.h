@@ -40,10 +40,18 @@ const T& TreeNode<T>::getValue() {
 
 template <typename T>
 void TreeNode<T>::setNext(TreeNode* node) {
-	if (*val > node->getValue()) {
-		more = node;
+	if (*val < node->getValue()) {
+		if (more) {
+			more->setNext(node);
+		} else {
+			more = node;
+		}
 	} else {
-		less = node;
+		if (less) {
+			less->setNext(node);
+		} else {
+			less = node;
+		}
 	}
 }
 
@@ -55,11 +63,15 @@ void TreeNode<T>::show() {
 		if (less) {
 			std::cout<<"l :"<<less->getValue()<<std::endl;
 			less->show();
+		} else {
+			std::cout<<"l : Null"<<std::endl;
 		}
 
 		if (more) {
 			std::cout<<"m :"<<more->getValue()<<std::endl;
 			more->show();
+		} else {
+			std::cout<<"m : Null"<<std::endl;
 		}
 
 	} catch (int errCode) {

@@ -32,17 +32,19 @@ int main(void) {
 	op::TreeNode<int> *more = new op::TreeNode<int>(7);
 	op::TreeNode<int> *less = new op::TreeNode<int>(3);
 
-	cout<<root->getValue()<<endl;
-	cout<<more->getValue()<<endl;
-	cout<<less->getValue()<<endl;
-
-	const int *n = &root->getValue();
-
-	cout<<"Addr :"<<&root->getValue()<<", Val :"<<root->getValue()<<endl;
-	cout<<"Addr :"<<&n<<", Val :"<<*n<<endl;
+	op::TreeNode<int> *n1 = new op::TreeNode<int>(1);
+	op::TreeNode<int> *n2 = new op::TreeNode<int>(6);
+	op::TreeNode<int> *n3 = new op::TreeNode<int>(8);
+	op::TreeNode<int> *n4 = new op::TreeNode<int>(9);
+	op::TreeNode<int> *n5 = new op::TreeNode<int>(2);
 
 	root->setNext(more);
 	root->setNext(less);
+	root->setNext(n1);
+	root->setNext(n2);
+	root->setNext(n3);
+	root->setNext(n4);
+	root->setNext(n5);
 	root->show();
 
 	return 0;
