@@ -14,6 +14,8 @@
 //#include "Algorithms/InsertionSort/InsertSort.h"
 //#include "Algorithms/SelectionSort/SelectionSort.h"
 //#include "Algorithms/BubbleSort/BubbleSort.h"
+#include "Algorithms/AlphaBeta/AlphaBeta.h"
+#include "Algorithms/AlphaBeta/ABNode.h"
 //#include "CProblemSet/Prologue/Plateau.h"
 //#include "CProblemSet/Prologue/GTCount.h"
 //#include "CProblemSet/Prologue/EQCount.h"
@@ -27,27 +29,44 @@ using namespace std;
 void single99();
 void double99();
 
+int foo1();
+int foo2();
+int foo3(int);
+int foo(int (*)(), int (*)());
+
 int main(void) {
-	op::TreeNode<int> *root = new op::TreeNode<int>(5);
-	op::TreeNode<int> *more = new op::TreeNode<int>(7);
-	op::TreeNode<int> *less = new op::TreeNode<int>(3);
 
-	op::TreeNode<int> *n1 = new op::TreeNode<int>(1);
-	op::TreeNode<int> *n2 = new op::TreeNode<int>(6);
-	op::TreeNode<int> *n3 = new op::TreeNode<int>(8);
-	op::TreeNode<int> *n4 = new op::TreeNode<int>(9);
-	op::TreeNode<int> *n5 = new op::TreeNode<int>(2);
+//	int (*fun1)() = foo1;
+//	int (*fun2)() = foo2;
+//	int (*fun3)(int) = foo3;
+//
+//	cout<<foo(fun1, fun2)<<endl;
+//	cout<<fun3(5)<<endl;
 
-	root->setNext(more);
-	root->setNext(less);
-	root->setNext(n1);
-	root->setNext(n2);
-	root->setNext(n3);
-	root->setNext(n4);
-	root->setNext(n5);
-	root->show();
+	int alpha = -1000;
+	int beta = 1000;
+	int depth = 5;
+
+	op::AlphaBeta ab;
+	op::ABNode *startNode = new op::ABNode();
+	ab.process(startNode, alpha, beta, depth, true);
 
 	return 0;
+}
+
+int foo1() {
+	return 1;
+}
+int foo2() {
+	return 2;
+}
+
+int foo3(int val) {
+	return val;
+}
+
+int foo(int (*fun1)(), int (*fun2)()) {
+	return fun1() + fun2();
 }
 
 void single99() {
