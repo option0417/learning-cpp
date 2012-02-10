@@ -9,6 +9,8 @@
 #define ALPHABETA_H_
 
 #include "ABNode.h"
+#include <boost/thread/thread.hpp>
+#include <boost/thread/xtime.hpp>
 #include <iostream>
 using namespace std;
 
@@ -22,6 +24,7 @@ public:
 	inline int max(int, int);
 	inline int min(int, int);
 private:
+	static const int degree = 2;
 	int alpha;
 	int beta;
 	int depth;

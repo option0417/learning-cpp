@@ -11,9 +11,7 @@ namespace op {
 
 AlphaBeta::AlphaBeta() {}
 
-AlphaBeta::~AlphaBeta() {
-	// TODO Auto-generated destructor stub
-}
+AlphaBeta::~AlphaBeta() {}
 
 int AlphaBeta::process(ABNode *node, int &alpha, int &beta, int depth, bool flag) {
 	cout<<"At :"<<depth<<endl;
@@ -24,25 +22,38 @@ int AlphaBeta::process(ABNode *node, int &alpha, int &beta, int depth, bool flag
 
 	if (flag) {
 		cout<<"True"<<endl;
-		alpha = max(alpha, process(node->getnode(), alpha, beta, depth - 1, !flag));
-		cout<<"Alpha :"<<alpha<<endl;
-		cout<<"Beta :"<<beta<<endl;
-		if (alpha >= beta) {
-			cout<<"Beta cut"<<endl;
-			cout<<"A :"<<alpha<<endl;
-			cout<<"B :"<<beta<<endl;
+		int cnt = 1;
+		while (cnt <= AlphaBeta::degree) {
+			cout<<"Cnt :"<<cnt<<endl;
+			alpha = max(alpha, process(node->getnode(), alpha, beta, depth - 1, !flag));
+			if (alpha >= beta) {
+				cout<<"Beta cut"<<endl;
+				cout<<"A :"<<alpha<<endl;
+				cout<<"B :"<<beta<<endl;
+				cout<<"Depth "<<depth<<" Result "<<alpha<<endl;
+				return alpha;
+			}
+			cnt++;
+			boost::this_thread::sleep(boost::posix_time::seconds(2));
 		}
+		cout<<"Depth "<<depth<<" Result "<<alpha<<endl;
 		return alpha;
 	} else {
 		cout<<"False"<<endl;
-		beta = min(beta, process(node->getnode(), alpha, beta, depth - 1, !flag));
-		cout<<"Alpha :"<<alpha<<endl;
-		cout<<"Beta :"<<beta<<endl;
-		if (alpha >= beta) {
-			cout<<"Alpha cut"<<endl;
-			cout<<"A :"<<alpha<<endl;
-			cout<<"B :"<<beta<<endl;
+		int cnt = 1;
+		while (cnt < degree) {
+			beta = min(beta, process(node->getnode(), alpha, beta, depth - 1, !flag));
+			if (alpha >= beta) {
+				cout<<"Alpha cut"<<endl;
+				cout<<"A :"<<alpha<<endl;
+				cout<<"B :"<<beta<<endl;
+				cout<<"Depth "<<depth<<" Result "<<beta<<endl;
+				return beta;
+			}
+			cnt++;
+			boost::this_thread::sleep(boost::posix_time::seconds(2));
 		}
+		cout<<"Depth "<<depth<<" Result "<<beta<<endl;
 		return beta;
 	}
 }

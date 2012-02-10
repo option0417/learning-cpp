@@ -45,11 +45,11 @@ int main(void) {
 
 	int alpha = -1000;
 	int beta = 1000;
-	int depth = 5;
+	int depth = 3;
 
 	op::AlphaBeta ab;
 	op::ABNode *startNode = new op::ABNode();
-	ab.process(startNode, alpha, beta, depth, true);
+	cout<<"Result : "<<ab.process(startNode, alpha, beta, depth, true)<<endl;
 
 	return 0;
 }
