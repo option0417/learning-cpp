@@ -20,7 +20,7 @@ class AlphaBeta {
 public:
 	AlphaBeta();
 	~AlphaBeta();
-	int process(ABNode*, int&, int&, int, bool);
+	int process(ABNode*, int, int, int, bool);
 	inline int max(int, int);
 	inline int min(int, int);
 private:
@@ -28,6 +28,9 @@ private:
 	int alpha;
 	int beta;
 	int depth;
+	AlphaBeta *ptr;
+	inline AlphaBeta* getPtr();
+	inline void putPtr();
 };
 
 } /* namespace op */

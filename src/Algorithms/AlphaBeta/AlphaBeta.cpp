@@ -9,12 +9,16 @@
 
 namespace op {
 
-AlphaBeta::AlphaBeta() {}
+AlphaBeta::AlphaBeta() {
+}
 
-AlphaBeta::~AlphaBeta() {}
+AlphaBeta::~AlphaBeta() {
+}
 
-int AlphaBeta::process(ABNode *node, int &alpha, int &beta, int depth, bool flag) {
+int AlphaBeta::process(ABNode *node, int tmpalpha, int tmpbeta, int depth, bool flag) {
 	cout<<"At :"<<depth<<endl;
+	alpha = tmpalpha;
+	beta = tmpbeta;
 	if (depth == 0) {
 		cout<<"Terminal :"<<node->getValue()<<endl;
 		return node->getValue();
@@ -25,7 +29,7 @@ int AlphaBeta::process(ABNode *node, int &alpha, int &beta, int depth, bool flag
 		int cnt = 1;
 		while (cnt <= AlphaBeta::degree) {
 			cout<<"Cnt :"<<cnt<<endl;
-			alpha = max(alpha, process(node->getnode(), alpha, beta, depth - 1, !flag));
+			alpha = max(alpha, getPtr()->process(node->getnode(), alpha, beta, depth - 1, !flag));
 			if (alpha >= beta) {
 				cout<<"Beta cut"<<endl;
 				cout<<"A :"<<alpha<<endl;
@@ -34,7 +38,8 @@ int AlphaBeta::process(ABNode *node, int &alpha, int &beta, int depth, bool flag
 				return alpha;
 			}
 			cnt++;
-			boost::this_thread::sleep(boost::posix_time::seconds(2));
+			putPtr();
+			boost::this_thread::sleep(boost::posix_time::seconds(5));
 		}
 		cout<<"Depth "<<depth<<" Result "<<alpha<<endl;
 		return alpha;
@@ -42,7 +47,7 @@ int AlphaBeta::process(ABNode *node, int &alpha, int &beta, int depth, bool flag
 		cout<<"False"<<endl;
 		int cnt = 1;
 		while (cnt < degree) {
-			beta = min(beta, process(node->getnode(), alpha, beta, depth - 1, !flag));
+			beta = min(beta, getPtr()->process(node->getnode(), alpha, beta, depth - 1, !flag));
 			if (alpha >= beta) {
 				cout<<"Alpha cut"<<endl;
 				cout<<"A :"<<alpha<<endl;
@@ -51,6 +56,7 @@ int AlphaBeta::process(ABNode *node, int &alpha, int &beta, int depth, bool flag
 				return beta;
 			}
 			cnt++;
+			putPtr();
 			boost::this_thread::sleep(boost::posix_time::seconds(2));
 		}
 		cout<<"Depth "<<depth<<" Result "<<beta<<endl;
@@ -68,5 +74,17 @@ inline int AlphaBeta::min(int a, int b) {
 	return (a < b) ? a : b;
 }
 
+inline AlphaBeta* AlphaBeta::getPtr() {
+	if (ptr) {
+		ptr = new AlphaBeta();
+	}
+	return ptr;
+}
+
+inline void AlphaBeta::putPtr() {
+	if (ptr) {
+		delete ptr;
+	}
+}
 
 } /* namespace op */

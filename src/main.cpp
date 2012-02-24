@@ -49,7 +49,7 @@ int main(void) {
 
 	op::AlphaBeta ab;
 	op::ABNode *startNode = new op::ABNode();
-	cout<<"Result : "<<ab.process(startNode, alpha, beta, depth, true)<<endl;
+	cout<<"Final Result : "<<ab.process(startNode, alpha, beta, depth, true)<<endl;
 
 	return 0;
 }
