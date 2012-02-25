@@ -23,8 +23,10 @@ public:
 	int process(ABNode*, int, int, int, bool);
 	inline int max(int, int);
 	inline int min(int, int);
+	static int getTimes();
 private:
 	static const int degree = 2;
+	static int count;
 	int alpha;
 	int beta;
 	int depth;

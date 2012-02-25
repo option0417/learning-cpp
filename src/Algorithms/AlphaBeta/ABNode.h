@@ -9,14 +9,15 @@
 #define ABNODE_H_
 
 #include <iostream>
+#include <boost/random.hpp>
+#include "../../Others/RandomGenerator.h"
 
 namespace op {
 
 class ABNode {
 public:
 	ABNode() {
-		srand(time(NULL));
-		this->val = new int((int)rand() % 100 + 1);
+		val = new int(op::RandomGenerator::getInstance()->get());
 		more = 0;
 		less = 0;
 	}
@@ -30,6 +31,11 @@ public:
 		if (less) {
 			delete less;
 			less = 0;
+		}
+
+		if (val) {
+			delete val;
+			val = 0;
 		}
 	}
 
@@ -59,7 +65,7 @@ public:
 		return setNext(new ABNode());
 	}
 private:
-	const int *val;
+	int *val;
 	ABNode *more;
 	ABNode *less;
 };

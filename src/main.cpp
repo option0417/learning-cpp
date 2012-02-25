@@ -45,11 +45,12 @@ int main(void) {
 
 	int alpha = -1000;
 	int beta = 1000;
-	int depth = 3;
+	int depth = 10;
 
 	op::AlphaBeta ab;
 	op::ABNode *startNode = new op::ABNode();
 	cout<<"Final Result : "<<ab.process(startNode, alpha, beta, depth, true)<<endl;
+	cout<<"Times : "<<op::AlphaBeta::getTimes()<<endl;
 
 	return 0;
 }
